@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>🎉 Selamat Ulang Tahun 🎉</title>
+    <style>
+        body { text-align: center; font-family: Comic Sans MS; background-color: pink; color: white; }
+        #gambar-container { display: none; }
+        img { width: 200px; margin: 10px; }
+        #countdown { font-size: 24px; color: yellow; }
+    </style>
+</head>
+<body>
+    <h1>🎉 Selamat Ulang Tahun! 🎉</h1>
+    <button onclick="mintaPassword()">Lanjutkan</button>
+    <audio id="musik" src="ulangtahun.mp3" loop></audio>
+
+    <div id="countdown"></div>
+    <div id="gambar-container">
+        <img src="gambar1.jpg">
+        <img src="gambar2.jpg">
+        <img src="gambar3.jpg">
+    </div>
+
+    <script>
+        function mintaPassword() {
+            var password = prompt("Masukkan password untuk membuka hadiah:");
+            if (password === "1234") {
+                document.getElementById("musik").play();
+                hitungMundur(5);
+            } else {
+                alert("Password salah! Coba lagi.");
+                mintaPassword();
+            }
+        }
+
+        function hitungMundur(detik) {
+            if (detik > 0) {
+                document.getElementById("countdown").textContent = `🎁 Hadiah akan terbuka dalam ${detik} detik 🎁`;
+                setTimeout(() => hitungMundur(detik - 1), 1000);
+            } else {
+                document.getElementById("countdown").textContent = "";
+                document.getElementById("gambar-container").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
